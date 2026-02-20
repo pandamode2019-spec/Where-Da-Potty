@@ -1,0 +1,20 @@
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { db } from './firebase';
+
+export const getAllBathrooms = async () => {
+  try {
+    const snapshot = await getDocs(collection(db, 'bathrooms'));
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    console.error('Error:', error);
+    return [];
+  }
+};
+
+export const updateBathroomRating = async (bathroomId, rating) => {
+  try {
+    await updateDoc(doc(db, 'bathrooms', bathroomId), { rating });
+  } catch (error) {
+    console.error('Error updating rating:', error);
+  }
+};
