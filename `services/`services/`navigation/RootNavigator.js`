@@ -1,0 +1,17 @@
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from '../screens/HomeScreen';
+import BathroomDetailsScreen from '../screens/BathroomDetailsScreen';
+import MapScreen from '../screens/MapScreen';
+
+const Stack = createNativeStackNavigator();
+
+export default function RootNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Where Da Potty' }} />
+      <Stack.Screen name="Map" component={MapScreen} options={{ title: 'Find Bathrooms' }} />
+      <Stack.Screen name="BathroomDetails" component={BathroomDetailsScreen} options={{ title: 'Bathroom Details' }} />
+    </Stack.Navigator>
+  );
+}
